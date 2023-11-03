@@ -9,8 +9,14 @@ import {
   SENTRY_INTEGRATIONS,
   TRACES_SAMPLE_RATE,
 } from "./sentry/constants";
+import { PostHogProvider } from "posthog-js/react";
+import posthog from "posthog-js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+posthog.init(process.env.REACT_APP_PUBLIC_POSTHOG_KEY, {
+  api_host: process.env.REACT_APP_PUBLIC_POSTHOG_HOST,
+});
 
 Sentry.init({
   dsn: process.env.REACT_APP_SENTRY_DSN,
@@ -33,6 +39,8 @@ Sentry.init({
 
 root.render(
   <React.StrictMode>
-    <App />
+    <PostHogProvider client={posthog}>
+      <App />
+    </PostHogProvider>
   </React.StrictMode>
 );

@@ -1,8 +1,14 @@
 import * as Sentry from "@sentry/react";
+import posthog from "posthog-js";
 
 export const SENTRY_INTEGRATIONS = [
   new Sentry.BrowserTracing(),
   new Sentry.Replay(),
+  new posthog.SentryIntegration(
+    posthog,
+    process.env.REACT_APP_SENTRY_ORGANIZATION_NAME,
+    process.env.REACT_APP_SENTRY_PROJECT_ID
+  ),
 ];
 
 export const LOCALHOST_DOMAIN = "localhost";
