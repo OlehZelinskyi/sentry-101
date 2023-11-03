@@ -10,7 +10,7 @@ on:
     branches: ["master"]
 
 env:
-  SENTRY_AUTH_TOKEN: { { secrets.SENTRY_AUTH_TOKEN } }
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
 jobs:
   build:
