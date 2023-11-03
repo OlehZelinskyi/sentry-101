@@ -24,7 +24,10 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "testing-library/prefer-screen-queries": "off"
+    }
   },
   "browserslist": {
     "production": [
